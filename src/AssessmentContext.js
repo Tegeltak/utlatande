@@ -85,26 +85,26 @@ export const AssessmentProvider = ({ children }) => {
       recommendations: {
         child_male: {
           difficulties_concentrating: [
-            { text: "Placeholder recommendation for 1a.", linkedSymptoms: ["concentration_1"] },
-            { text: "Placeholder recommendation for 1b.", linkedSymptoms: ["concentration_2"] },
-            { text: "Placeholder recommendation for 1c.", linkedSymptoms: ["concentration_3"] },
-            { text: "Placeholder recommendation for 1d.", linkedSymptoms: ["concentration_4"] },
-            { text: "Placeholder recommendation for 1e.", linkedSymptoms: ["concentration_5"] },
-            { text: "Placeholder recommendation for 1f.", linkedSymptoms: ["concentration_6"] },
-            { text: "Placeholder recommendation for 1g.", linkedSymptoms: ["concentration_7"] },
-            { text: "Placeholder recommendation for 1h.", linkedSymptoms: ["concentration_8"] },
-            { text: "Placeholder recommendation for 1i.", linkedSymptoms: ["concentration_9"] }
+            { text: "Tydliga genomgångar och kontrollsteg minskar slarvfel.", linkedSymptoms: ["concentration_1"] },
+            { text: "Han behöver kortare arbetsmoment och tydliga delmål för att bibehålla fokus.", linkedSymptoms: ["concentration_2"] },
+            { text: "Vid instruktioner är det hjälpsamt att söka ögonkontakt och låta honom upprepa vad som sagts.", linkedSymptoms: ["concentration_3"] },
+            { text: "Han behöver stöd i att planera och avsluta uppgifter innan nya påbörjas.", linkedSymptoms: ["concentration_4"] },
+            { text: "Visuella scheman och checklistor underlättar organisering.", linkedSymptoms: ["concentration_5"] },
+            { text: "Uppgifter bör delas upp i små, hanterbara steg med regelbunden återkoppling.", linkedSymptoms: ["concentration_6"] },
+            { text: "Han behöver hjälp att hålla ordning på material och aktiviteter för att dämpa rastlöshet.", linkedSymptoms: ["concentration_7"] },
+            { text: "Lugn arbetsmiljö och minskade distraktioner främjar koncentration.", linkedSymptoms: ["concentration_8"] },
+            { text: "Påminnelser och dagliga rutiner hjälper honom att komma ihåg aktiviteter.", linkedSymptoms: ["concentration_9"] }
           ],
           hyperactivity_impulsivity: [
-            { text: "Placeholder recommendation for 2a.", linkedSymptoms: ["hyperactivity_1"] },
-            { text: "Placeholder recommendation for 2b.", linkedSymptoms: ["hyperactivity_2"] },
-            { text: "Placeholder recommendation for 2c.", linkedSymptoms: ["hyperactivity_3"] },
-            { text: "Placeholder recommendation for 2d.", linkedSymptoms: ["hyperactivity_4"] },
-            { text: "Placeholder recommendation for 2e.", linkedSymptoms: ["hyperactivity_5"] },
-            { text: "Placeholder recommendation for 2f.", linkedSymptoms: ["hyperactivity_6"] },
-            { text: "Placeholder recommendation for 2g.", linkedSymptoms: ["hyperactivity_7"] },
-            { text: "Placeholder recommendation for 2h.", linkedSymptoms: ["hyperactivity_8"] },
-            { text: "Placeholder recommendation for 2i.", linkedSymptoms: ["hyperactivity_9"] }
+            { text: "Han gynnas av möjlighet till rörelsepauser och varierade sittställningar.", linkedSymptoms: ["hyperactivity_1"] },
+            { text: "Förtydsgärne i om pauser minskar oro vid längre lektioner.", linkedSymptoms: ["hyperactivity_2"] },
+            { text: "Han behöver tillråten till fysisk aktivitet under dagen för att reglera energi.", linkedSymptoms: ["hyperactivity_3"] },
+            { text: "Det är hjälpsamt att förbereda honom på lugna aktiviteter och tydligare förväntningar.", linkedSymptoms: ["hyperactivity_4"] },
+            { text: "Han gynnas av möjlighet till korta avbrott och tydliga övergångar mellan.", linkedSymptoms: ["hyperactivity_5"] },
+            { text: "Tydliga regler för samtal och ljudnivå gör det lättare att anpassa sig.", linkedSymptoms: ["hyperactivity_6"] },
+            { text: "Han kan behöva påminnelser om att vänta tills andra pratat färdigt.", linkedSymptoms: ["hyperactivity_7"] },
+            { text: "Träning i väntan och turtagning bör ske i trygga miljöer.", linkedSymptoms: ["hyperactivity_8"] },
+            { text: "Social handledning kan stärka förmågan att läsa av när det passar att ta ordet.", linkedSymptoms: ["hyperactivity_9"] }
           ],
           socio_communicative: [
             { text: "Placeholder recommendation for A1.", linkedSymptoms: ["social_communication_1"] },
@@ -120,26 +120,26 @@ export const AssessmentProvider = ({ children }) => {
         },
         child_female: {
           difficulties_concentrating: [
-            { text: "Placeholder recommendation for 1a.", linkedSymptoms: ["concentration_1"] },
-            { text: "Placeholder recommendation for 1b.", linkedSymptoms: ["concentration_2"] },
-            { text: "Placeholder recommendation for 1c.", linkedSymptoms: ["concentration_3"] },
-            { text: "Placeholder recommendation for 1d.", linkedSymptoms: ["concentration_4"] },
-            { text: "Placeholder recommendation for 1e.", linkedSymptoms: ["concentration_5"] },
-            { text: "Placeholder recommendation for 1f.", linkedSymptoms: ["concentration_6"] },
-            { text: "Placeholder recommendation for 1g.", linkedSymptoms: ["concentration_7"] },
-            { text: "Placeholder recommendation for 1h.", linkedSymptoms: ["concentration_8"] },
-            { text: "Placeholder recommendation for 1i.", linkedSymptoms: ["concentration_9"] }
+            { text: "Tydliga genomgångar och kontrollsteg minskar slarvfel.", linkedSymptoms: ["concentration_1"] },
+            { text: "Hon behöver kortare arbetsmoment och tydliga delmål för att bibehålla fokus.", linkedSymptoms: ["concentration_2"] },
+            { text: "Vid instruktioner är det hjälpsamt att söka ögonkontakt och låta henne upprepa vad som sagts.", linkedSymptoms: ["concentration_3"] },
+            { text: "Hon behöver stöd i att planera och avsluta uppgifter innan nya påbörjas.", linkedSymptoms: ["concentration_4"] },
+            { text: "Visuella scheman och checklistor underlättar organisering.", linkedSymptoms: ["concentration_5"] },
+            { text: "Uppgifter bör delas upp i små, hanterbara steg med regelbunden återkoppling.", linkedSymptoms: ["concentration_6"] },
+            { text: "Hon behöver hjälp att hålla ordning på material och aktiviteter för att dämpa rastlöshet.", linkedSymptoms: ["concentration_7"] },
+            { text: "Lugn arbetsmiljö och minskade distraktioner främjar koncentration.", linkedSymptoms: ["concentration_8"] },
+            { text: "Påminnelser och dagliga rutiner hjälper henne att komma ihåg aktiviteter.", linkedSymptoms: ["concentration_9"] }
           ],
           hyperactivity_impulsivity: [
-            { text: "Placeholder recommendation for 2a.", linkedSymptoms: ["hyperactivity_1"] },
-            { text: "Placeholder recommendation for 2b.", linkedSymptoms: ["hyperactivity_2"] },
-            { text: "Placeholder recommendation for 2c.", linkedSymptoms: ["hyperactivity_3"] },
-            { text: "Placeholder recommendation for 2d.", linkedSymptoms: ["hyperactivity_4"] },
-            { text: "Placeholder recommendation for 2e.", linkedSymptoms: ["hyperactivity_5"] },
-            { text: "Placeholder recommendation for 2f.", linkedSymptoms: ["hyperactivity_6"] },
-            { text: "Placeholder recommendation for 2g.", linkedSymptoms: ["hyperactivity_7"] },
-            { text: "Placeholder recommendation for 2h.", linkedSymptoms: ["hyperactivity_8"] },
-            { text: "Placeholder recommendation for 2i.", linkedSymptoms: ["hyperactivity_9"] }
+            { text: "Hon gynnas av möjlighet till rörelsepauser och varierade sittställningar.", linkedSymptoms: ["hyperactivity_1"] },
+            { text: "Förtydsgärne i om pauser minskar oro vid längre lektioner.", linkedSymptoms: ["hyperactivity_2"] },
+            { text: "Hon behöver tillråten till fysisk aktivitet under dagen för att reglera energi.", linkedSymptoms: ["hyperactivity_3"] },
+            { text: "Det är hjälpsamt att förbereda henne på lugna aktiviteter och tydligare förväntningar.", linkedSymptoms: ["hyperactivity_4"] },
+            { text: "Hon gynnas av möjlighet till korta avbrott och tydliga övergångar mellan.", linkedSymptoms: ["hyperactivity_5"] },
+            { text: "Tydliga regler för samtal och ljudnivå gör det lättare att anpassa sig.", linkedSymptoms: ["hyperactivity_6"] },
+            { text: "Hon kan behöva påminnelser om att vänta tills andra pratat färdigt.", linkedSymptoms: ["hyperactivity_7"] },
+            { text: "Träning i väntan och turtagning bör ske i trygga miljöer.", linkedSymptoms: ["hyperactivity_8"] },
+            { text: "Social handledning kan stärka förmågan att läsa av när det passar att ta ordet.", linkedSymptoms: ["hyperactivity_9"] }
           ],
           socio_communicative: [
             { text: "Placeholder recommendation for A1.", linkedSymptoms: ["social_communication_1"] },
@@ -155,26 +155,26 @@ export const AssessmentProvider = ({ children }) => {
         },
         teen_male: {
           difficulties_concentrating: [
-            { text: "Placeholder recommendation for 1a.", linkedSymptoms: ["concentration_1"] },
-            { text: "Placeholder recommendation for 1b.", linkedSymptoms: ["concentration_2"] },
-            { text: "Placeholder recommendation for 1c.", linkedSymptoms: ["concentration_3"] },
-            { text: "Placeholder recommendation for 1d.", linkedSymptoms: ["concentration_4"] },
-            { text: "Placeholder recommendation for 1e.", linkedSymptoms: ["concentration_5"] },
-            { text: "Placeholder recommendation for 1f.", linkedSymptoms: ["concentration_6"] },
-            { text: "Placeholder recommendation for 1g.", linkedSymptoms: ["concentration_7"] },
-            { text: "Placeholder recommendation for 1h.", linkedSymptoms: ["concentration_8"] },
-            { text: "Placeholder recommendation for 1i.", linkedSymptoms: ["concentration_9"] }
+            { text: "Tid för genomgång och självkontroll minskar slarvfel i uppgifter.", linkedSymptoms: ["concentration_1"] },
+            { text: "Han behöver planeringsstöd och struktur för att kunna hålla fokus under längre pass.", linkedSymptoms: ["concentration_2"] },
+            { text: "Vid samtal och instruktioner är direkt och tydlig kommunikation mest effektivt.", linkedSymptoms: ["concentration_3"] },
+            { text: "Han gynnas av stöd i att slutföra påbörjade uppgifter innan nya introduceras.", linkedSymptoms: ["concentration_4"] },
+            { text: "Digitala planeringsverktyg (kalender, checklista) hjälper organisering.", linkedSymptoms: ["concentration_5"] },
+            { text: "Uppgifter bör delas upp i etapper och följas upp regelbundet.", linkedSymptoms: ["concentration_6"] },
+            { text: "Han behöver stöd i att hålla reda på material och varva ned i lugna situationer.", linkedSymptoms: ["concentration_7"] },
+            { text: "Avskärmad arbetsmiljö eller luddämpande hörlurar hjälper koncentration.", linkedSymptoms: ["concentration_8"] },
+            { text: "Digitala planeringsrutiner (t.ex. kvällen innan) minskar glömska.", linkedSymptoms: ["concentration_9"] }
           ],
           hyperactivity_impulsivity: [
-            { text: "Placeholder recommendation for 2a.", linkedSymptoms: ["hyperactivity_1"] },
-            { text: "Placeholder recommendation for 2b.", linkedSymptoms: ["hyperactivity_2"] },
-            { text: "Placeholder recommendation for 2c.", linkedSymptoms: ["hyperactivity_3"] },
-            { text: "Placeholder recommendation for 2d.", linkedSymptoms: ["hyperactivity_4"] },
-            { text: "Placeholder recommendation for 2e.", linkedSymptoms: ["hyperactivity_5"] },
-            { text: "Placeholder recommendation for 2f.", linkedSymptoms: ["hyperactivity_6"] },
-            { text: "Placeholder recommendation for 2g.", linkedSymptoms: ["hyperactivity_7"] },
-            { text: "Placeholder recommendation for 2h.", linkedSymptoms: ["hyperactivity_8"] },
-            { text: "Placeholder recommendation for 2i.", linkedSymptoms: ["hyperactivity_9"] }
+            { text: "Han gynnas av möjlighet till rörelse och varierad studiemiljö.", linkedSymptoms: ["hyperactivity_1"] },
+            { text: "Kortare arbetspass med planerade pauser förebygger rastlöshet.", linkedSymptoms: ["hyperactivity_2"] },
+            { text: "Regelbunden fysisk aktivitet hjälper till att reglera energi.", linkedSymptoms: ["hyperactivity_3"] },
+            { text: "Förberedelser inför stillasittande eller tysta situationer minskar frustration.", linkedSymptoms: ["hyperactivity_4"] },
+            { text: "Han behöver möjlighet till aktivitet under dagen och struktur som hjälper att varva ned i lugna situationer.", linkedSymptoms: ["hyperactivity_5"] },
+            { text: "Validerande social återkoppling kring samtalsstil kan hjälpa honom att anpassa tempo.", linkedSymptoms: ["hyperactivity_6"] },
+            { text: "Tydlig struktur i turordning vid diskussioner minskar impulsiva samtal.", linkedSymptoms: ["hyperactivity_7"] },
+            { text: "Strategier för att hantera väntan och turtagning.", linkedSymptoms: ["hyperactivity_8"] },
+            { text: "Stöd i social reflektion stärker förmågan att läsa av situationer.", linkedSymptoms: ["hyperactivity_9"] }
           ],
           socio_communicative: [
             { text: "Placeholder recommendation for A1.", linkedSymptoms: ["social_communication_1"] },
@@ -190,26 +190,26 @@ export const AssessmentProvider = ({ children }) => {
         },
         teen_female: {
           difficulties_concentrating: [
-            { text: "Placeholder recommendation for 1a.", linkedSymptoms: ["concentration_1"] },
-            { text: "Placeholder recommendation for 1b.", linkedSymptoms: ["concentration_2"] },
-            { text: "Placeholder recommendation for 1c.", linkedSymptoms: ["concentration_3"] },
-            { text: "Placeholder recommendation for 1d.", linkedSymptoms: ["concentration_4"] },
-            { text: "Placeholder recommendation for 1e.", linkedSymptoms: ["concentration_5"] },
-            { text: "Placeholder recommendation for 1f.", linkedSymptoms: ["concentration_6"] },
-            { text: "Placeholder recommendation for 1g.", linkedSymptoms: ["concentration_7"] },
-            { text: "Placeholder recommendation for 1h.", linkedSymptoms: ["concentration_8"] },
-            { text: "Placeholder recommendation for 1i.", linkedSymptoms: ["concentration_9"] }
+            { text: "Tid för genomgång och självkontroll minskar slarvfel i uppgifter.", linkedSymptoms: ["concentration_1"] },
+            { text: "Hon behöver planeringsstöd och struktur för att kunna hålla fokus under längre pass.", linkedSymptoms: ["concentration_2"] },
+            { text: "Vid samtal och instruktioner är direkt och tydlig kommunikation mest effektivt.", linkedSymptoms: ["concentration_3"] },
+            { text: "Hon gynnas av stöd i att slutföra påbörjade uppgifter innan nya introduceras.", linkedSymptoms: ["concentration_4"] },
+            { text: "Digitala planeringsverktyg (kalender, checklista) hjälper organisering.", linkedSymptoms: ["concentration_5"] },
+            { text: "Uppgifter bör delas upp i etapper och följas upp regelbundet.", linkedSymptoms: ["concentration_6"] },
+            { text: "Hon behöver stöd i att hålla reda på material och varva ned i lugna situationer.", linkedSymptoms: ["concentration_7"] },
+            { text: "Avskärmad arbetsmiljö eller luddämpande hjälpmedel kan underlätta koncentration.", linkedSymptoms: ["concentration_8"] },
+            { text: "Digitala planeringsrutiner (t.ex. kvällen innan) minskar glömska.", linkedSymptoms: ["concentration_9"] }
           ],
           hyperactivity_impulsivity: [
-            { text: "Placeholder recommendation for 2a.", linkedSymptoms: ["hyperactivity_1"] },
-            { text: "Placeholder recommendation for 2b.", linkedSymptoms: ["hyperactivity_2"] },
-            { text: "Placeholder recommendation for 2c.", linkedSymptoms: ["hyperactivity_3"] },
-            { text: "Placeholder recommendation for 2d.", linkedSymptoms: ["hyperactivity_4"] },
-            { text: "Placeholder recommendation for 2e.", linkedSymptoms: ["hyperactivity_5"] },
-            { text: "Placeholder recommendation for 2f.", linkedSymptoms: ["hyperactivity_6"] },
-            { text: "Placeholder recommendation for 2g.", linkedSymptoms: ["hyperactivity_7"] },
-            { text: "Placeholder recommendation for 2h.", linkedSymptoms: ["hyperactivity_8"] },
-            { text: "Placeholder recommendation for 2i.", linkedSymptoms: ["hyperactivity_9"] }
+            { text: "Hon gynnas av möjlighet till rörelse och varierad studiemiljö.", linkedSymptoms: ["hyperactivity_1"] },
+            { text: "Kortare arbetspass med planerade pauser förebygger rastlöshet.", linkedSymptoms: ["hyperactivity_2"] },
+            { text: "Regelbunden fysisk aktivitet hjälper till att reglera energi.", linkedSymptoms: ["hyperactivity_3"] },
+            { text: "Förberedelser inför stillasittande eller tysta situationer minskar frustration.", linkedSymptoms: ["hyperactivity_4"] },
+            { text: "Hon behöver möjlighet till aktivitet under dagen och struktur som hjälper att varva ned i lugna situationer.", linkedSymptoms: ["hyperactivity_5"] },
+            { text: "Validerande social återkoppling kring samtalsstil kan hjälpa henne att anpassa tempo.", linkedSymptoms: ["hyperactivity_6"] },
+            { text: "Tydlig struktur i turordning vid diskussioner minskar impulsiva samtal.", linkedSymptoms: ["hyperactivity_7"] },
+            { text: "Strategier för att hantera väntan och turtagning.", linkedSymptoms: ["hyperactivity_8"] },
+            { text: "Stöd i social reflektion stärker förmågan att läsa av situationer.", linkedSymptoms: ["hyperactivity_9"] }
           ],
           socio_communicative: [
             { text: "Placeholder recommendation for A1.", linkedSymptoms: ["social_communication_1"] },
