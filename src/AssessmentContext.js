@@ -355,7 +355,9 @@ export const AssessmentProvider = ({ children }) => {
   const [patientAge, setPatientAge] = useState('child');
   const [patientSex, setPatientSex] = useState('male');
   const [selectedDiagnosis, setSelectedDiagnosis] = useState('none');
-  const [view, setView] = useState('assessment'); // 'assessment' or 'settings'
+  const [view, setView] = useState('assessment'); // 'assessment', 'cats', or 'settings'
+  const [catsResponses, setCatsResponses] = useState({});
+  const [catsTraumaResponses, setCatsTraumaResponses] = useState({});
 
   // Save to localStorage whenever data changes
   useEffect(() => {
@@ -570,6 +572,10 @@ Det är viktigt att man får stöd och hjälp med rutiner och struktur i vardage
     clearSelectedSymptoms,
     updateRecommendationText,
     updateRecommendationSymptoms,
+    catsResponses,
+    setCatsResponses,
+    catsTraumaResponses,
+    setCatsTraumaResponses,
   };
 
   return (
