@@ -474,6 +474,35 @@ body {
   color: #059669;
 }
 
+/* Autism Child Warning */
+.autism-child-warning {
+  background: #fef2f2;
+  border: 2px solid #fca5a5;
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  color: #991b1b;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+/* Diagnosis Text */
+.diagnosis-text-container {
+  margin-bottom: 1.5rem;
+}
+
+.diagnosis-text {
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  white-space: pre-line;
+  line-height: 1.75;
+  font-size: 0.875rem;
+  color: #1e293b;
+}
+
 /* Empty State */
 .empty-state {
   background: white;

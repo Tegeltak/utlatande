@@ -130,18 +130,35 @@ const AssessmentView = () => {
     selectedSymptoms,
     toggleSymptom,
     getFilteredRecommendations,
+    getDiagnosisText,
     clearSelectedSymptoms,
     patientAge,
     setPatientAge,
     patientSex,
     setPatientSex,
+    selectedDiagnosis,
+    setSelectedDiagnosis,
   } = useAssessment();
 
   const [copied, setCopied] = React.useState(false);
   const recommendations = getFilteredRecommendations();
+  const diagnosisText = getDiagnosisText();
 
   const handleCopyRecommendations = () => {
-    const text = recommendations.map(rec => `- ${rec.text}`).join('\n');
+    let textParts = [];
+    
+    // Add diagnosis text if it exists
+    if (diagnosisText) {
+      textParts.push(diagnosisText);
+    }
+    
+    // Add recommendations if they exist
+    if (recommendations.length > 0) {
+      const recsText = recommendations.map(rec => `- ${rec.text}`).join('\n');
+      textParts.push(recsText);
+    }
+    
+    const text = textParts.join('\n\n');
     navigator.clipboard.writeText(text).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -155,7 +172,16 @@ const AssessmentView = () => {
 
   const sexOptions = [
     { value: 'male', label: 'Pojke' },
-    { value: 'female', label: 'Flicka' }
+    { value: 'female', label: 'Flicka' },
+    { value: 'nonbinary', label: 'Icke-binär' }
+  ];
+
+  const diagnosisOptions = [
+    { value: 'none', label: 'Ingen diagnos' },
+    { value: 'adhd', label: 'ADHD' },
+    { value: 'autism', label: 'Autism' },
+    { value: 'both', label: 'ADHD och Autism' },
+    { value: 'intellectual_disability', label: 'Intellektuell funktionsnedsättning' }
   ];
 
   return (
@@ -188,6 +214,18 @@ const AssessmentView = () => {
       {/* Patient Settings Bar */}
       <div className="settings-bar">
         <div className="settings-bar-content">
+          <div className="setting-group">
+            <label className="setting-label">Diagnos:</label>
+            <select
+              value={selectedDiagnosis}
+              onChange={(e) => setSelectedDiagnosis(e.target.value)}
+              className="setting-select"
+            >
+              {diagnosisOptions.map(diagnosis => (
+                <option key={diagnosis.value} value={diagnosis.value}>{diagnosis.label}</option>
+              ))}
+            </select>
+          </div>
           <div className="setting-group">
             <label className="setting-label">Åldersgrupp:</label>
             <select
@@ -257,7 +295,7 @@ const AssessmentView = () => {
           <div className="recommendations-content">
             <div className="recommendations-header">
               <h3 className="recommendations-title">Rekommendationer</h3>
-              {recommendations.length > 0 && (
+              {(diagnosisText || recommendations.length > 0) && (
                 <button
                   onClick={handleCopyRecommendations}
                   className={`copy-button ${copied ? 'copy-button-copied' : ''}`}
@@ -280,6 +318,22 @@ const AssessmentView = () => {
                 </button>
               )}
             </div>
+
+            {/* Autism Child Warning */}
+            {selectedDiagnosis === 'autism' && patientAge === 'child' && (
+              <div className="autism-child-warning">
+                OBS: texten riktad mot barn som har som mest fyllt 4 år detta år!
+              </div>
+            )}
+
+            {/* Diagnosis Text */}
+            {diagnosisText && (
+              <div className="diagnosis-text-container">
+                <div className="diagnosis-text">
+                  {diagnosisText}
+                </div>
+              </div>
+            )}
             
             {selectedSymptoms.length === 0 ? (
               <div className="empty-state">
@@ -306,7 +360,7 @@ const AssessmentView = () => {
                       Inga matchande rekommendationer
                     </p>
                     <p className="warning-message">
-                      Inga rekommendationer matchar nuvarande patientprofil ({patientAge === 'child' ? 'Barn' : 'Tonåring'}, {patientSex === 'male' ? 'Pojke' : 'Flicka'}) och symtom. 
+                      Inga rekommendationer matchar nuvarande patientprofil ({patientAge === 'child' ? 'Barn' : 'Tonåring'}, {patientSex === 'male' ? 'Pojke' : patientSex === 'female' ? 'Flicka' : 'Icke-binär'}) och symtom. 
                       Prova andra symtom eller konfigurera rekommendationer i Inställningar.
                     </p>
                   </div>
@@ -336,8 +390,10 @@ const SettingsView = () => {
   const profiles = [
     { key: 'child_male', label: 'Barn - Pojke' },
     { key: 'child_female', label: 'Barn - Flicka' },
+    { key: 'child_nonbinary', label: 'Barn - Icke-binär' },
     { key: 'teen_male', label: 'Tonåring - Pojke' },
-    { key: 'teen_female', label: 'Tonåring - Flicka' }
+    { key: 'teen_female', label: 'Tonåring - Flicka' },
+    { key: 'teen_nonbinary', label: 'Tonåring - Icke-binär' }
   ];
 
   const currentRecommendations = recommendations[selectedProfile]?.[selectedCat] || [];
