@@ -355,9 +355,11 @@ export const AssessmentProvider = ({ children }) => {
   const [patientAge, setPatientAge] = useState('child');
   const [patientSex, setPatientSex] = useState('male');
   const [selectedDiagnosis, setSelectedDiagnosis] = useState('none');
-  const [view, setView] = useState('assessment'); // 'assessment', 'cats', or 'settings'
+  const [view, setView] = useState('assessment'); // 'assessment', 'cats', 'pauls-ysr', 'pauls-cbcl', or 'settings'
   const [catsResponses, setCatsResponses] = useState({});
   const [catsTraumaResponses, setCatsTraumaResponses] = useState({});
+  const [paulsYSRResponses, setPaulsYSRResponses] = useState({});
+  const [paulsCBCLResponses, setPaulsCBCLResponses] = useState({});
 
   // Save to localStorage whenever data changes
   useEffect(() => {
@@ -445,13 +447,13 @@ export const AssessmentProvider = ({ children }) => {
     const diagnosisTexts = {
       adhd_child: `För en god utveckling och livskvalitet är det viktigt att omgivningen har goda kunskaper om ADHD.
 
-XXX behöver tydliga rutiner och stöttning kring det ${p.han_hon} upplever är svårt, som när det blir för starka känslor. Möjligheten att öva fungerande strategier för att hantera vardagens svårigheter med stöd av vuxen persons närvaro och medling minskar risken för konflikter och upplevelser av misslyckande. Familjen rekommenderas att ta kontakt med ADHD-center för att få tillgång till deras utbud. Familjen informeras om möjlighet till medicinering.
+XXX behöver tydliga rutiner och stöttning kring det ${p.han_hon} upplever är svårt. Möjligheten att öva fungerande strategier för att hantera vardagens svårigheter med stöd av vuxen persons närvaro och medling minskar risken för konflikter och upplevelser av misslyckande. Familjen rekommenderas att ta kontakt med ADHD-center för att få tillgång till deras utbud. Familjen informeras om möjlighet till medicinering.
 
 I samtliga miljöer är det viktigt att förstärka önskvärda beteenden. Tät och påtaglig feedback, främst i form av uppmuntran och beröm direkt efter avslutade uppgifter kan öka motivationen. Var så konkret som möjligt genom att säga vad det är som ${p.han_hon} gör bra.`,
 
       adhd_teen: `För en god utveckling och livskvalitet är det viktigt att omgivningen har goda kunskaper om ADHD.
 
-XXX behöver tydliga rutiner och stöttning kring det ${p.han_hon} upplever är svårt, som när det blir för starka känslor. Möjligheten att öva fungerande strategier för att hantera vardagens svårigheter med stöd av vuxen persons närvaro och medling minskar risken för konflikter och upplevelser av misslyckande. Familjen rekommenderas att ta kontakt med ADHD-center för att få tillgång till deras utbud. Familjen informeras om möjlighet till medicinering.
+Möjligheten att öva fungerande strategier för att hantera vardagens svårigheter med stöd av vuxen persons närvaro och medling minskar risken för konflikter och upplevelser av misslyckande. Familjen rekommenderas att ta kontakt med ADHD-center för att få tillgång till deras utbud. Familjen informeras om möjlighet till medicinering.
 
 I samtliga miljöer är det viktigt att förstärka önskvärda beteenden. Tät och påtaglig feedback, främst i form av uppmuntran och beröm direkt efter avslutade uppgifter kan öka motivationen. Var så konkret som möjligt genom att säga vad det är som ${p.han_hon} gör bra.`,
 
@@ -576,6 +578,10 @@ Det är viktigt att man får stöd och hjälp med rutiner och struktur i vardage
     setCatsResponses,
     catsTraumaResponses,
     setCatsTraumaResponses,
+    paulsYSRResponses,
+    setPaulsYSRResponses,
+    paulsCBCLResponses,
+    setPaulsCBCLResponses,
   };
 
   return (

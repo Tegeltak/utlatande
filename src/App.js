@@ -71,8 +71,7 @@ const AppContent = () => {
       {/* Sidebar */}
       <aside className={`sidebar ${sidebarOpen ? 'sidebar-open' : ''}`}>
         <div className="sidebar-header">
-          <h1 className="sidebar-title">Utlåtande</h1>
-          <p className="sidebar-subtitle">Neuropsykiatrisk bedömning</p>
+          <h1 className="sidebar-title">Psykiatrisk bedömning</h1>
         </div>
         
         <nav className="sidebar-nav">
@@ -86,7 +85,7 @@ const AppContent = () => {
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
             </svg>
-            <span>Bedömning</span>
+            <span>Utlåtande</span>
           </button>
           <button
             onClick={() => {
@@ -102,6 +101,31 @@ const AppContent = () => {
           </button>
           <button
             onClick={() => {
+              setView('pauls-ysr');
+              setSidebarOpen(false);
+            }}
+            className={`nav-button ${view === 'pauls-ysr' ? 'nav-button-active' : ''}`}
+          >
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+            <span>Pauls favorit YSR</span>
+          </button>
+          <button
+            onClick={() => {
+              setView('pauls-cbcl');
+              setSidebarOpen(false);
+            }}
+            className={`nav-button ${view === 'pauls-cbcl' ? 'nav-button-active' : ''}`}
+          >
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+            <span>Pauls favorit CBCL</span>
+          </button>
+          {/* Settings button temporarily hidden
+          <button
+            onClick={() => {
               setView('settings');
               setSidebarOpen(false);
             }}
@@ -113,6 +137,7 @@ const AppContent = () => {
             </svg>
             <span>Inställningar</span>
           </button>
+          */}
         </nav>
 
         <div className="sidebar-footer">
@@ -130,7 +155,7 @@ const AppContent = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
-        {view === 'assessment' ? <AssessmentView /> : view === 'cats' ? <CatsView /> : <SettingsView />}
+        {view === 'assessment' ? <AssessmentView /> : view === 'cats' ? <CatsView /> : view === 'pauls-ysr' ? <PaulsYSRView /> : view === 'pauls-cbcl' ? <PaulsCBCLView /> : <SettingsView />}
       </main>
     </div>
   );
@@ -202,7 +227,7 @@ const AssessmentView = () => {
       <div className="view-header">
         <div className="header-content">
           <div>
-            <h2 className="header-title">Bedömning</h2>
+            <h2 className="header-title">Utlåtande</h2>
             <p className="header-subtitle">
               Konfigurera patientinformation och välj symtom
             </p>
@@ -373,7 +398,7 @@ const AssessmentView = () => {
                     </p>
                     <p className="warning-message">
                       Inga rekommendationer matchar nuvarande patientprofil ({patientAge === 'child' ? 'Barn' : 'Tonåring'}, {patientSex === 'male' ? 'Pojke' : patientSex === 'female' ? 'Flicka' : 'Icke-binär'}) och symtom. 
-                      Prova andra symtom eller konfigurera rekommendationer i Inställningar.
+                      Prova att välja andra symtom.
                     </p>
                   </div>
                 </div>
@@ -399,27 +424,18 @@ const CatsView = () => {
     { id: 6, text: "Försöker att inte tänka på eller ha känslor om det som hände." },
     { id: 7, text: "Försöker att undvika allt som påminner mig om det som hände (människor, platser, saker, situationer, samtal)." },
     { id: 8, text: "Kan inte minnas delar av det som hände." },
-    { id: 9, text: "Har negativa tankar som:", subQuestions: [
-        { id: '9a', text: "Jag kommer inte få ett bra liv." },
-        { id: '9b', text: "Jag kan inte lita på andra." },
-        { id: '9c', text: "Världen är farlig." },
-        { id: '9d', text: "Jag duger inte." }
-      ]
-    },
-    { id: 10, text: "Skuld för det som hände:", subQuestions: [
-        { id: '10a', text: "Lägger skulden på mig själv för det som hände." },
-        { id: '10b', text: "Lägger skulden på andra för det som hände även om det inte var deras fel." }
-      ]
-    },
+    { id: '9a', text: "Jag kommer inte få ett bra liv." },
+    { id: '9b', text: "Jag kan inte lita på andra." },
+    { id: '9c', text: "Världen är farlig." },
+    { id: '9d', text: "Jag duger inte." },
+    { id: '10a', text: "Lägger skulden på mig själv för det som hände." },
+    { id: '10b', text: "Lägger skulden på andra för det som hände även om det inte var deras fel." },
     { id: 11, text: "Har upprörda känslor (rädsla, ilska, skuld, skam) en stor del av tiden." },
     { id: 12, text: "Vill inte göra saker som jag gjorde tidigare." },
     { id: 13, text: "Känner mig inte nära andra." },
     { id: 14, text: "Kan inte ha positiva känslor, t ex glädje eller kärlek." },
-    { id: 15, text: "Hanterar starka känslor:", subQuestions: [
-        { id: '15a', text: "Jag har väldigt svårt att lugna ner mig när jag är upprörd." },
-        { id: '15b', text: "Känner mig väldigt stressad även om det inte går så ut över andra." }
-      ]
-    },
+    { id: '15a', text: "Jag har väldigt svårt att lugna ner mig när jag är upprörd." },
+    { id: '15b', text: "Känner mig väldigt stressad även om det inte går så ut över andra." },
     { id: 16, text: "Gör farliga saker." },
     { id: 17, text: "Är överdriven försiktig (t ex ser mig omkring för att se vem som är bakom mig)." },
     { id: 18, text: "Är lättskrämd." },
@@ -470,8 +486,32 @@ const CatsView = () => {
   const calculateScores = () => {
     // DIMENSIONAL SCORING (Page 3 of instructions)
     
-    // DSM-5 PTSD: Sum ALL questions 1-20 (including subquestions)
-    const dsm5Total = Object.values(catsResponses).reduce((sum, val) => sum + (typeof val === 'number' ? val : 0), 0);
+    // DSM-5 PTSD: Sum questions 1-20
+    // For questions 9, 10, and 15 (which only have sub-questions), only count the highest rated sub-question
+    const regularQuestions = [1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14, 16, 17, 18, 19, 20];
+    const regularQuestionsTotal = regularQuestions.reduce((sum, id) => sum + (catsResponses[id] || 0), 0);
+    
+    // Question 9: Only count the highest rated sub-question (9a, 9b, 9c, 9d)
+    const q9Max = Math.max(
+      catsResponses['9a'] || 0,
+      catsResponses['9b'] || 0,
+      catsResponses['9c'] || 0,
+      catsResponses['9d'] || 0
+    );
+    
+    // Question 10: Only count the highest rated sub-question (10a, 10b)
+    const q10Max = Math.max(
+      catsResponses['10a'] || 0,
+      catsResponses['10b'] || 0
+    );
+    
+    // Question 15: Only count the highest rated sub-question (15a, 15b)
+    const q15Max = Math.max(
+      catsResponses['15a'] || 0,
+      catsResponses['15b'] || 0
+    );
+    
+    const dsm5Total = regularQuestionsTotal + q9Max + q10Max + q15Max;
 
     // ICD-11 PTSD: Sum questions 2, 3, 6, 7, 17, 18
     const icd11Questions = [2, 3, 6, 7, 17, 18];
@@ -626,6 +666,14 @@ const CatsView = () => {
     return { level: '', text: '', color: '#f8fafc' };
   };
 
+  const hasAnyResponses = Object.keys(catsResponses).length > 0;
+  const hasAnyTraumaResponses = Object.keys(catsTraumaResponses).length > 0;
+
+  // Get list of traumatic events answered "yes"
+  const traumaticEventsYes = traumaQuestions
+    .filter(q => catsTraumaResponses[q.id] === 'ja')
+    .map(q => q.text);
+
   const scores = calculateScores();
   const dsm5Interp = getInterpretation(scores.dsm5.total, 'dsm5');
   const icd11Interp = getInterpretation(scores.icd11.total, 'icd11');
@@ -633,6 +681,14 @@ const CatsView = () => {
 
   const generateResultsText = () => {
     let text = "CATS-2 RESULTAT\n\n";
+    
+    if (traumaticEventsYes.length > 0) {
+      text += "TRAUMATISKA HÄNDELSER (JA-SVAR):\n\n";
+      traumaticEventsYes.forEach(event => {
+        text += `• ${event}\n`;
+      });
+      text += "\n";
+    }
     
     text += "DIMENSIONELL POÄNGSÄTTNING:\n\n";
     text += `DSM-5 PTSD: ${scores.dsm5.total} poäng - ${dsm5Interp.text}\n`;
@@ -662,8 +718,6 @@ const CatsView = () => {
     }
   };
 
-  const hasAnyResponses = Object.keys(catsResponses).length > 0;
-
   return (
     <div className="view-container">
       <div className="view-header">
@@ -671,7 +725,7 @@ const CatsView = () => {
           <h2 className="header-title">CATS-2</h2>
           <p className="header-subtitle">Child and Adolescent Trauma Screen (7-17 år)</p>
         </div>
-        {hasAnyResponses && (
+        {(hasAnyResponses || hasAnyTraumaResponses) && (
           <button onClick={handleReset} className="reset-button">
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -789,42 +843,15 @@ const CatsView = () => {
                     </label>
                   ))}
                 </div>
-                {q.subQuestions && (
-                  <div className="cats-subquestions">
-                    {q.subQuestions.map(sub => (
-                      <div key={sub.id} className="cats-question">
-                        <div className="cats-question-text cats-subquestion-text">
-                          <span className="cats-question-number">{sub.id}.</span>
-                          <span>{sub.text}</span>
-                        </div>
-                        <div className="cats-options">
-                          {[0, 1, 2, 3].map(value => (
-                            <label key={value} className="cats-radio-label">
-                              <input
-                                type="radio"
-                                name={`q${sub.id}`}
-                                value={value}
-                                checked={catsResponses[sub.id] === value}
-                                onChange={() => handleResponseChange(sub.id, value)}
-                                className="cats-radio"
-                              />
-                              <span>{value}</span>
-                            </label>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
             ))}
           </div>
         </div>
 
-        {hasAnyResponses && (
-          <div className="cats-results">
-            <div className="cats-results-header">
-              <h3 className="cats-results-title">Resultat</h3>
+        <div className="cats-results">
+          <div className="cats-results-header">
+            <h3 className="cats-results-title">Resultat</h3>
+            {(hasAnyResponses || hasAnyTraumaResponses) && (
               <button onClick={handleCopy} className={`copy-button ${copied ? 'copy-button-copied' : ''}`}>
                 {copied ? (
                   <>
@@ -842,10 +869,25 @@ const CatsView = () => {
                   </>
                 )}
               </button>
-            </div>
+            )}
+          </div>
 
-            <div className="cats-results-content">
+          <div className="cats-results-content">
+            {traumaticEventsYes.length > 0 && (
               <div className="cats-score-section">
+                <h4 className="cats-score-title">Traumatiska händelser (JA-svar)</h4>
+                <div className="cats-trauma-list">
+                  {traumaticEventsYes.map((event, index) => (
+                    <div key={index} className="cats-trauma-item">
+                      <span className="cats-trauma-bullet">•</span>
+                      <span>{event}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="cats-score-section">
                 <h4 className="cats-score-title">Dimensionell poängsättning</h4>
                 
                 <div className="cats-score-card" style={{ backgroundColor: dsm5Interp.color }}>
@@ -1004,7 +1046,714 @@ const CatsView = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+  );
+};
+
+const PaulsYSRView = () => {
+  const { paulsYSRResponses, setPaulsYSRResponses } = useAssessment();
+
+  // Generate all 112 questions, with question 56 having sub-questions
+  const questions = [];
+  for (let i = 1; i <= 112; i++) {
+    if (i === 56) {
+      // Question 56 has 8 sub-questions (a-h)
+      questions.push({
+        id: 56,
+        hasSubQuestions: true,
+        subQuestions: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'].map(letter => ({
+          id: `56${letter}`,
+          label: `${i}${letter}`,
+          text: `Fråga ${i}${letter}` // Placeholder text
+        }))
+      });
+    } else {
+      questions.push({
+        id: i,
+        label: `${i}`,
+        text: `Fråga ${i}`, // Placeholder text
+        hasSubQuestions: false
+      });
+    }
+  }
+
+  const handleResponseChange = (questionId, value) => {
+    setPaulsYSRResponses(prev => ({
+      ...prev,
+      [questionId]: value
+    }));
+  };
+
+  const handleReset = () => {
+    if (window.confirm('Är du säker på att du vill rensa alla svar?')) {
+      setPaulsYSRResponses({});
+    }
+  };
+
+  const hasAnyResponses = Object.keys(paulsYSRResponses).length > 0;
+
+  // Calculate YSR DSM-5-O scores
+  const calculateScores = () => {
+    const dsm5Categories = {
+      category1: {
+        name: "Kategori 1",
+        questions: [5, 14, 18, 24, 35, 52, 54, 76, 77, 91, 100, 102, 103],
+        score: 0
+      },
+      category2: {
+        name: "Kategori 2",
+        questions: [11, 29, 30, 31, 45, 47, 50, 71, 112],
+        score: 0
+      },
+      category3: {
+        name: "Kategori 3",
+        questions: ['56a', '56b', '56c', '56d', '56e', '56f', '56g'],
+        score: 0
+      },
+      category4: {
+        name: "Kategori 4",
+        questions: [4, 8, 10, 41, 78, 93, 104],
+        score: 0
+      },
+      category5: {
+        name: "Kategori 5",
+        questions: [3, 22, 23, 86, 95],
+        score: 0
+      },
+      category6: {
+        name: "Kategori 6",
+        questions: [16, 21, 26, 28, 37, 39, 43, 57, 67, 72, 81, 82, 90, 97, 101],
+        score: 0
+      }
+    };
+
+    const ysrSSCategories = {
+      categoryI: {
+        name: "I",
+        questions: [14, 29, 30, 31, 32, 33, 35, 45, 50, 52, 71, 91, 112],
+        score: 0
+      },
+      categoryII: {
+        name: "II",
+        questions: [5, 42, 65, 69, 75, 102, 103, 111],
+        score: 0
+      },
+      categoryIII: {
+        name: "III",
+        questions: [47, 51, 54, '56a', '56b', '56c', '56d', '56e', '56f', '56g'],
+        score: 0
+      },
+      categoryIV: {
+        name: "IV",
+        questions: [11, 12, 25, 27, 34, 36, 38, 48, 62, 64, 79],
+        score: 0
+      },
+      categoryV: {
+        name: "V",
+        questions: [9, 18, 40, 46, 58, 66, 70, 76, 83, 84, 85, 100],
+        score: 0
+      },
+      categoryVI: {
+        name: "VI",
+        questions: [1, 4, 8, 10, 13, 17, 41, 61, 78],
+        score: 0
+      },
+      categoryVII: {
+        name: "VII",
+        questions: [2, 26, 28, 39, 43, 63, 67, 72, 81, 82, 90, 96, 99, 101, 105],
+        score: 0
+      },
+      categoryVIII: {
+        name: "VIII",
+        questions: [3, 16, 19, 20, 21, 22, 23, 37, 57, 68, 86, 87, 89, 94, 95, 97, 104],
+        score: 0
+      },
+      categoryO: {
+        name: "O",
+        questions: [7, 24, 44, 53, 55, '56h', 74, 77, 93, 110],
+        score: 0,
+        isSpecial: true // Mark this as special for different rendering
+      }
+    };
+
+    // Calculate scores for DSM-5-O categories
+    Object.keys(dsm5Categories).forEach(catKey => {
+      const category = dsm5Categories[catKey];
+      category.score = category.questions.reduce((sum, qId) => {
+        return sum + (paulsYSRResponses[qId] || 0);
+      }, 0);
+    });
+
+    // Calculate scores for YSR SS categories
+    Object.keys(ysrSSCategories).forEach(catKey => {
+      const category = ysrSSCategories[catKey];
+      category.score = category.questions.reduce((sum, qId) => {
+        return sum + (paulsYSRResponses[qId] || 0);
+      }, 0);
+    });
+
+    // Calculate total scores
+    const dsm5TotalScore = Object.values(dsm5Categories).reduce((sum, cat) => sum + cat.score, 0);
+    const ysrSSTotalScore = Object.values(ysrSSCategories).reduce((sum, cat) => sum + cat.score, 0);
+
+    return { 
+      dsm5Categories, 
+      dsm5TotalScore, 
+      ysrSSCategories, 
+      ysrSSTotalScore 
+    };
+  };
+
+  const scores = calculateScores();
+
+  return (
+    <div className="view-container">
+      <div className="view-header">
+        <div>
+          <h2 className="header-title">Pauls favorit YSR</h2>
+          <p className="header-subtitle">112 frågor (0-2 poäng per fråga)</p>
+        </div>
+        {hasAnyResponses && (
+          <button onClick={handleReset} className="reset-button">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            <span>Rensa alla svar</span>
+          </button>
         )}
+      </div>
+
+      <div className="cats-container">
+        <div className="cats-form">
+          <div className="cats-section">
+            <h3 className="cats-section-title">
+              Markera 0, 1 eller 2 för varje fråga
+            </h3>
+            <p className="cats-legend">0 = Stämmer ej / 1 = Stämmer någorlunda, eller ibland / 2 = Stämmer mycket bra, eller ofta</p>
+            
+            {questions.map((q) => (
+              <div key={q.id}>
+                {q.hasSubQuestions ? (
+                  // Question 56 with sub-questions
+                  <div className="cats-question-group">
+                    <h4 className="cats-question-group-title">Fråga {q.id}</h4>
+                    {q.subQuestions.map((sub) => (
+                      <div key={sub.id} className="cats-question">
+                        <div className="cats-question-text">
+                          <span className="cats-question-number">{sub.label}.</span>
+                          <span>{sub.text}</span>
+                        </div>
+                        <div className="cats-options">
+                          {[0, 1, 2].map(value => (
+                            <label key={value} className="cats-radio-label">
+                              <input
+                                type="radio"
+                                name={`q${sub.id}`}
+                                value={value}
+                                checked={paulsYSRResponses[sub.id] === value}
+                                onChange={() => handleResponseChange(sub.id, value)}
+                                className="cats-radio"
+                              />
+                              <span>{value}</span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  // Regular question
+                  <div className="cats-question">
+                    <div className="cats-question-text">
+                      <span className="cats-question-number">{q.label}.</span>
+                      <span>{q.text}</span>
+                    </div>
+                    <div className="cats-options">
+                      {[0, 1, 2].map(value => (
+                        <label key={value} className="cats-radio-label">
+                          <input
+                            type="radio"
+                            name={`q${q.id}`}
+                            value={value}
+                            checked={paulsYSRResponses[q.id] === value}
+                            onChange={() => handleResponseChange(q.id, value)}
+                            className="cats-radio"
+                          />
+                          <span>{value}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="cats-results">
+          <div className="cats-results-header">
+            <h3 className="cats-results-title">Resultat</h3>
+          </div>
+          <div className="cats-results-content">
+            {/* YSR DSM-5-O */}
+            <div className="cats-score-section" style={{ marginBottom: '2rem' }}>
+              <h4 className="cats-score-title" style={{ marginBottom: '0.75rem' }}>YSR DSM-5-O</h4>
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                {Object.entries(scores.dsm5Categories).map(([key, category]) => (
+                  <div key={key} style={{ 
+                    flex: '0 0 auto',
+                    minWidth: '120px',
+                    padding: '0.75rem',
+                    backgroundColor: '#e0f2fe',
+                    borderRadius: '0.5rem',
+                    border: '2px solid #3b82f6'
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', justifyContent: 'center' }}>
+                      <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#1e40af' }}>
+                        {category.score}
+                      </div>
+                      <div style={{ fontSize: '0.875rem', fontWeight: '600', color: '#3b82f6' }}>
+                        {category.name}
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.125rem' }}>
+                      {category.questions.map(qId => {
+                        const score = paulsYSRResponses[qId] || 0;
+                        const bgColor = score === 2 ? '#fee2e2' : score === 1 ? '#fed7aa' : '#f1f5f9';
+                        const textColor = score === 2 ? '#dc2626' : score === 1 ? '#ea580c' : '#64748b';
+                        return (
+                          <div 
+                            key={qId} 
+                            style={{ 
+                              padding: '0.125rem 0.25rem', 
+                              borderRadius: '0.25rem', 
+                              backgroundColor: bgColor,
+                              color: textColor,
+                              fontWeight: score > 0 ? 'bold' : 'normal',
+                              fontSize: '0.7rem',
+                              textAlign: 'center'
+                            }}
+                          >
+                            {qId}: {score}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* YSR SS */}
+            <div className="cats-score-section">
+              <h4 className="cats-score-title" style={{ marginBottom: '0.75rem' }}>YSR SS</h4>
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                {Object.entries(scores.ysrSSCategories).map(([key, category]) => {
+                  const isSpecial = category.isSpecial;
+                  const bgColor = isSpecial ? '#fef3c7' : '#e0f2fe';
+                  const borderColor = isSpecial ? '#f59e0b' : '#3b82f6';
+                  const scoreColor = isSpecial ? '#92400e' : '#1e40af';
+                  const nameColor = isSpecial ? '#f59e0b' : '#3b82f6';
+                  
+                  return (
+                    <div key={key} style={{ 
+                      flex: '0 0 auto',
+                      minWidth: '120px',
+                      padding: '0.75rem',
+                      backgroundColor: bgColor,
+                      borderRadius: '0.5rem',
+                      border: `2px solid ${borderColor}`
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', justifyContent: 'center' }}>
+                        <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: scoreColor }}>
+                          {category.score}
+                        </div>
+                        <div style={{ fontSize: '0.875rem', fontWeight: '600', color: nameColor }}>
+                          {category.name}
+                        </div>
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.125rem' }}>
+                        {category.questions.map(qId => {
+                          const score = paulsYSRResponses[qId] || 0;
+                          const bgColor = score === 2 ? '#fee2e2' : score === 1 ? '#fed7aa' : '#f1f5f9';
+                          const textColor = score === 2 ? '#dc2626' : score === 1 ? '#ea580c' : '#64748b';
+                          return (
+                            <div 
+                              key={qId} 
+                              style={{ 
+                                padding: '0.125rem 0.25rem', 
+                                borderRadius: '0.25rem', 
+                                backgroundColor: bgColor,
+                                color: textColor,
+                                fontWeight: score > 0 ? 'bold' : 'normal',
+                                fontSize: '0.7rem',
+                                textAlign: 'center'
+                              }}
+                            >
+                              {qId}: {score}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const PaulsCBCLView = () => {
+  const { paulsCBCLResponses, setPaulsCBCLResponses } = useAssessment();
+
+  // Generate all 113 questions, with question 56 having sub-questions
+  const questions = [];
+  for (let i = 1; i <= 113; i++) {
+    if (i === 56) {
+      // Question 56 has 8 sub-questions (a-h)
+      questions.push({
+        id: 56,
+        hasSubQuestions: true,
+        subQuestions: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'].map(letter => ({
+          id: `56${letter}`,
+          label: `${i}${letter}`,
+          text: `Fråga ${i}${letter}` // Placeholder text
+        }))
+      });
+    } else {
+      questions.push({
+        id: i,
+        label: `${i}`,
+        text: `Fråga ${i}`, // Placeholder text
+        hasSubQuestions: false
+      });
+    }
+  }
+
+  const handleResponseChange = (questionId, value) => {
+    setPaulsCBCLResponses(prev => ({
+      ...prev,
+      [questionId]: value
+    }));
+  };
+
+  const handleReset = () => {
+    if (window.confirm('Är du säker på att du vill rensa alla svar?')) {
+      setPaulsCBCLResponses({});
+    }
+  };
+
+  const hasAnyResponses = Object.keys(paulsCBCLResponses).length > 0;
+
+  // Calculate CBCL DSM-5-O and CBCL SS scores
+  const calculateScores = () => {
+    const dsm5Categories = {
+      category1: {
+        name: "Kategori 1",
+        questions: [5, 14, 18, 24, 35, 52, 54, 76, 77, 91, 100, 102, 103],
+        score: 0
+      },
+      category2: {
+        name: "Kategori 2",
+        questions: [11, 29, 30, 31, 45, 47, 50, 71, 112],
+        score: 0
+      },
+      category3: {
+        name: "Kategori 3",
+        questions: ['56a', '56b', '56c', '56d', '56e', '56f', '56g'],
+        score: 0
+      },
+      category4: {
+        name: "Kategori 4",
+        questions: [4, 8, 10, 41, 78, 93, 104],
+        score: 0
+      },
+      category5: {
+        name: "Kategori 5",
+        questions: [3, 22, 23, 86, 95],
+        score: 0
+      },
+      category6: {
+        name: "Kategori 6",
+        questions: [15, 16, 21, 26, 28, 37, 39, 43, 57, 67, 72, 81, 82, 90, 97, 101, 106],
+        score: 0
+      }
+    };
+
+    const cbclSSCategories = {
+      categoryI: {
+        name: "I",
+        questions: [14, 29, 30, 31, 32, 33, 35, 45, 50, 52, 71, 91, 112],
+        score: 0
+      },
+      categoryII: {
+        name: "II",
+        questions: [5, 42, 65, 69, 75, 102, 103, 111],
+        score: 0
+      },
+      categoryIII: {
+        name: "III",
+        questions: [47, 49, 51, 54, '56a', '56b', '56c', '56d', '56e', '56f', '56g'],
+        score: 0
+      },
+      categoryIV: {
+        name: "IV",
+        questions: [11, 12, 25, 27, 34, 36, 38, 48, 62, 64, 79],
+        score: 0
+      },
+      categoryV: {
+        name: "V",
+        questions: [9, 18, 40, 46, 58, 59, 60, 66, 70, 76, 83, 84, 85, 92, 100],
+        score: 0
+      },
+      categoryVI: {
+        name: "VI",
+        questions: [1, 4, 8, 10, 13, 17, 41, 61, 78, 80],
+        score: 0
+      },
+      categoryVII: {
+        name: "VII",
+        questions: [2, 26, 28, 39, 43, 63, 67, 72, 73, 81, 82, 90, 96, 99, 101, 105, 106],
+        score: 0
+      },
+      categoryVIII: {
+        name: "VIII",
+        questions: [3, 16, 19, 20, 21, 22, 23, 37, 57, 68, 86, 87, 88, 89, 94, 95, 97, 104],
+        score: 0
+      },
+      categoryO: {
+        name: "O",
+        questions: [6, 7, 15, 24, 44, 53, 55, '56h', 74, 77, 93, 98, 107, 108, 109, 110, 113],
+        score: 0,
+        isSpecial: true
+      }
+    };
+
+    // Calculate scores for DSM-5-O categories
+    Object.keys(dsm5Categories).forEach(catKey => {
+      const category = dsm5Categories[catKey];
+      category.score = category.questions.reduce((sum, qId) => {
+        return sum + (paulsCBCLResponses[qId] || 0);
+      }, 0);
+    });
+
+    // Calculate scores for CBCL SS categories
+    Object.keys(cbclSSCategories).forEach(catKey => {
+      const category = cbclSSCategories[catKey];
+      category.score = category.questions.reduce((sum, qId) => {
+        return sum + (paulsCBCLResponses[qId] || 0);
+      }, 0);
+    });
+
+    return { 
+      dsm5Categories, 
+      cbclSSCategories
+    };
+  };
+
+  const scores = calculateScores();
+
+  return (
+    <div className="view-container">
+      <div className="view-header">
+        <div>
+          <h2 className="header-title">Pauls favorit CBCL</h2>
+          <p className="header-subtitle">113 frågor (0-2 poäng per fråga)</p>
+        </div>
+        {hasAnyResponses && (
+          <button onClick={handleReset} className="reset-button">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            <span>Rensa alla svar</span>
+          </button>
+        )}
+      </div>
+
+      <div className="cats-container">
+        <div className="cats-form">
+          <div className="cats-section">
+            <h3 className="cats-section-title">
+              Markera 0, 1 eller 2 för varje fråga
+            </h3>
+            <p className="cats-legend">0 = Stämmer ej / 1 = Stämmer någorlunda, eller ibland / 2 = Stämmer mycket bra, eller ofta</p>
+            
+            {questions.map((q) => (
+              <div key={q.id}>
+                {q.hasSubQuestions ? (
+                  // Question 56 with sub-questions
+                  <div className="cats-question-group">
+                    <h4 className="cats-question-group-title">Fråga {q.id}</h4>
+                    {q.subQuestions.map((sub) => (
+                      <div key={sub.id} className="cats-question">
+                        <div className="cats-question-text">
+                          <span className="cats-question-number">{sub.label}.</span>
+                          <span>{sub.text}</span>
+                        </div>
+                        <div className="cats-options">
+                          {[0, 1, 2].map(value => (
+                            <label key={value} className="cats-radio-label">
+                              <input
+                                type="radio"
+                                name={`q${sub.id}`}
+                                value={value}
+                                checked={paulsCBCLResponses[sub.id] === value}
+                                onChange={() => handleResponseChange(sub.id, value)}
+                                className="cats-radio"
+                              />
+                              <span>{value}</span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  // Regular question
+                  <div className="cats-question">
+                    <div className="cats-question-text">
+                      <span className="cats-question-number">{q.label}.</span>
+                      <span>{q.text}</span>
+                    </div>
+                    <div className="cats-options">
+                      {[0, 1, 2].map(value => (
+                        <label key={value} className="cats-radio-label">
+                          <input
+                            type="radio"
+                            name={`q${q.id}`}
+                            value={value}
+                            checked={paulsCBCLResponses[q.id] === value}
+                            onChange={() => handleResponseChange(q.id, value)}
+                            className="cats-radio"
+                          />
+                          <span>{value}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="cats-results">
+          <div className="cats-results-header">
+            <h3 className="cats-results-title">Resultat</h3>
+          </div>
+          <div className="cats-results-content">
+            {/* CBCL DSM-5-O */}
+            <div className="cats-score-section" style={{ marginBottom: '2rem' }}>
+              <h4 className="cats-score-title" style={{ marginBottom: '0.75rem' }}>CBCL DSM-5-O</h4>
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                {Object.entries(scores.dsm5Categories).map(([key, category]) => (
+                  <div key={key} style={{ 
+                    flex: '0 0 auto',
+                    minWidth: '120px',
+                    padding: '0.75rem',
+                    backgroundColor: '#e0f2fe',
+                    borderRadius: '0.5rem',
+                    border: '2px solid #3b82f6'
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', justifyContent: 'center' }}>
+                      <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#1e40af' }}>
+                        {category.score}
+                      </div>
+                      <div style={{ fontSize: '0.875rem', fontWeight: '600', color: '#3b82f6' }}>
+                        {category.name}
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.125rem' }}>
+                      {category.questions.map(qId => {
+                        const score = paulsCBCLResponses[qId] || 0;
+                        const bgColor = score === 2 ? '#fee2e2' : score === 1 ? '#fed7aa' : '#f1f5f9';
+                        const textColor = score === 2 ? '#dc2626' : score === 1 ? '#ea580c' : '#64748b';
+                        return (
+                          <div 
+                            key={qId} 
+                            style={{ 
+                              padding: '0.125rem 0.25rem', 
+                              borderRadius: '0.25rem', 
+                              backgroundColor: bgColor,
+                              color: textColor,
+                              fontWeight: score > 0 ? 'bold' : 'normal',
+                              fontSize: '0.7rem',
+                              textAlign: 'center'
+                            }}
+                          >
+                            {qId}: {score}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* CBCL SS */}
+            <div className="cats-score-section">
+              <h4 className="cats-score-title" style={{ marginBottom: '0.75rem' }}>CBCL SS</h4>
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                {Object.entries(scores.cbclSSCategories).map(([key, category]) => {
+                  const isSpecial = category.isSpecial;
+                  const bgColor = isSpecial ? '#fef3c7' : '#e0f2fe';
+                  const borderColor = isSpecial ? '#f59e0b' : '#3b82f6';
+                  const scoreColor = isSpecial ? '#92400e' : '#1e40af';
+                  const nameColor = isSpecial ? '#f59e0b' : '#3b82f6';
+                  
+                  return (
+                    <div key={key} style={{ 
+                      flex: '0 0 auto',
+                      minWidth: '120px',
+                      padding: '0.75rem',
+                      backgroundColor: bgColor,
+                      borderRadius: '0.5rem',
+                      border: `2px solid ${borderColor}`
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', justifyContent: 'center' }}>
+                        <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: scoreColor }}>
+                          {category.score}
+                        </div>
+                        <div style={{ fontSize: '0.875rem', fontWeight: '600', color: nameColor }}>
+                          {category.name}
+                        </div>
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.125rem' }}>
+                        {category.questions.map(qId => {
+                          const score = paulsCBCLResponses[qId] || 0;
+                          const bgColor = score === 2 ? '#fee2e2' : score === 1 ? '#fed7aa' : '#f1f5f9';
+                          const textColor = score === 2 ? '#dc2626' : score === 1 ? '#ea580c' : '#64748b';
+                          return (
+                            <div 
+                              key={qId} 
+                              style={{ 
+                                padding: '0.125rem 0.25rem', 
+                                borderRadius: '0.25rem', 
+                                backgroundColor: bgColor,
+                                color: textColor,
+                                fontWeight: score > 0 ? 'bold' : 'normal',
+                                fontSize: '0.7rem',
+                                textAlign: 'center'
+                              }}
+                            >
+                              {qId}: {score}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
